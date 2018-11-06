@@ -25,6 +25,8 @@ public class UserRoleController {
 	private String addUserSubmit(@ModelAttribute UserRoleModel user,RedirectAttributes redirectAttrs) {
 		if(validatePassword(user.getPassword())) {
 			userService.addUser(user);
+			String message = "User Berhasil ditambah";
+			redirectAttrs.addFlashAttribute("message", message);
 		}
 		else {
 			String message = "Password tidak sesuai ketentuan";
